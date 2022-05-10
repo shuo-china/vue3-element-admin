@@ -14,6 +14,6 @@ export default {
   components: {
     HelloWorld
   },
-  created() {}
+  created() { }
 }
 </script>
