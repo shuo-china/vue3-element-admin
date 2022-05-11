@@ -3,7 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import installElementPlus from './plugins/element'
+import '@/styles/index.scss'
+import installIcons from '@/icons'
 
 const app = createApp(App)
-installElementPlus(app)
-app.use(store).use(router).mount('#app')
+
+app
+  .use(store)
+  .use(router)
+  .use(installElementPlus)
+  .use(installIcons)
+  .mount('#app')
