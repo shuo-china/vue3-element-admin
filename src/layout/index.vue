@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <side-bar class="sidebar-container"></side-bar>
+    <side-bar class="sidebar-container" :style="{ backgroundColor: variables.menuBg }"></side-bar>
     <div class="main-container">
       <div class="fixed-header">
         <nav-bar></nav-bar>
@@ -14,11 +14,12 @@
 import NavBar from './components/NavBar.vue'
 import SideBar from './components/SideBar'
 import AppMain from './components/AppMain.vue'
+import variables from '@/styles/variables.module.scss'
 
 </script>
 
 <style lang="scss" scoped>
-@import '~@/styles/variables.scss';
+@import '~@/styles/variables.module.scss';
 @import '~@/styles/mixin.scss';
 
 .app-wrapper {

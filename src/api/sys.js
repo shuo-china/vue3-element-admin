@@ -8,3 +8,10 @@ export const login = (data) => {
     data
   })
 }
+
+export const getUserInfo = () => {
+  return request({
+    url: '/sys/profile',
+    method: 'GET'
+  })
+}
