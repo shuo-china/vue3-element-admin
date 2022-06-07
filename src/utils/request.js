@@ -41,6 +41,9 @@ service.interceptors.response.use(
     }
   },
   (err) => {
+    if (err.response && err.response.data && err.response.data.code === 401) {
+      store.dispatch('user/logout')
+    }
     ElMessage.error(err.message)
     return Promise.reject(err)
   }
