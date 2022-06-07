@@ -1,8 +1,9 @@
 import { login, getUserInfo } from '@/api/sys'
 import md5 from 'md5'
-import { getItem, setItem } from '@/utils/storage'
+import { getItem, setItem, removeAllitem } from '@/utils/storage'
 import { TOKEN } from '@/constant'
 import router from '@/router'
+import { setTimeStamp } from '@/utils/auth'
 
 export default {
   namespaced: true,
@@ -29,6 +30,7 @@ export default {
       })
         .then((data) => {
           this.commit('user/setToken', data.token)
+          setTimeStamp()
           router.push('/')
         })
         .catch((err) => {
@@ -40,6 +42,14 @@ export default {
       const res = await getUserInfo()
       this.commit('user/setUserInfo', res)
       return res
+    },
+    /* 退出登录 */
+    logout() {
+      this.commit('user/setToken', '')
+      this.commit('user/setUserInfo', {})
+      removeAllitem()
+      // TODO: 清理权限相关配置
+      router.push('/login')
     }
   }
 }
