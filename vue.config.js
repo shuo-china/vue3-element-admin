@@ -26,5 +26,6 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
+    config.resolve.alias.set('path', require.resolve('path-browserify'))
   }
 }
