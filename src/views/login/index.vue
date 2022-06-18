@@ -1,6 +1,11 @@
 <template>
   <div class="login-container">
-    <el-form class="login-form" ref="loginFormRef" :model="loginForm" :rules="loginRules">
+    <el-form
+      class="login-form"
+      ref="loginFormRef"
+      :model="loginForm"
+      :rules="loginRules"
+    >
       <div class="title-container">
         <h3 class="title">用户登录</h3>
       </div>
@@ -9,7 +14,12 @@
         <span class="svg-container">
           <svg-icon icon="user" />
         </span>
-        <el-input placeholder="username" name="username" type="text" v-model="loginForm.username"></el-input>
+        <el-input
+          placeholder="username"
+          name="username"
+          type="text"
+          v-model="loginForm.username"
+        ></el-input>
       </el-form-item>
       <!-- password -->
       <el-form-item prop="password">
@@ -18,16 +28,28 @@
             <svg-icon icon="password" />
           </el-icon>
         </span>
-        <el-input placeholder="password" name="password" :type="passwordType" v-model="loginForm.password"></el-input>
+        <el-input
+          placeholder="password"
+          name="password"
+          :type="passwordType"
+          v-model="loginForm.password"
+        ></el-input>
         <span class="show-pwd">
           <span class="svg-container" @click="onChangePwdType">
-            <svg-icon :icon="passwordType === 'password' ? 'eye' : 'eye-open'" />
+            <svg-icon
+              :icon="passwordType === 'password' ? 'eye' : 'eye-open'"
+            />
           </span>
         </span>
       </el-form-item>
 
       <!-- 登录按钮 -->
-      <el-button type="primary" style="width: 100%; margin-bottom: 30px" :loading="loading" @click="handlerLogin">登录
+      <el-button
+        type="primary"
+        style="width: 100%; margin-bottom: 30px"
+        :loading="loading"
+        @click="handlerLogin"
+        >登录
       </el-button>
     </el-form>
   </div>

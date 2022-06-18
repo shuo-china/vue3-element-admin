@@ -13,6 +13,7 @@ module.exports = {
     }
   },
   chainWebpack(config) {
+    config.resolve.alias.set('path', require.resolve('path-browserify'))
     // 设置 svg-sprite-loader
     config.module.rule('svg').exclude.add(resolve('src/icons')).end()
     config.module
@@ -26,6 +27,5 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
-    config.resolve.alias.set('path', require.resolve('path-browserify'))
   }
 }

@@ -4,11 +4,13 @@
     transition: margin-left 0.28s;
     margin-left: $sideBarWidth;
     position: relative;
+    transition: margin-left #{$sideBarDuration};
   }
 
   .sidebar-container {
     transition: width 0.28s;
     width: $sideBarWidth !important;
+    transition: width #{$sideBarDuration};
     height: 100%;
     position: fixed;
     top: 0;
