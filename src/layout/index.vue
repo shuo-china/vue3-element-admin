@@ -1,6 +1,12 @@
 <template>
-  <div class="wrapper" :class="[$store.getters.sidebarOpened ? 'openSidebar' : 'hideSidebar']">
-    <sidebar class="sidebar-container" :style="{ backgroundColor: variables.menuBg }"></sidebar>
+  <div
+    class="wrapper"
+    :class="[$store.getters.sidebarOpened ? 'openSidebar' : 'hideSidebar']"
+  >
+    <sidebar
+      class="sidebar-container"
+      :style="{ backgroundColor: variables.menuBg }"
+    ></sidebar>
     <div class="main-container">
       <div class="fixed-header">
         <nav-bar></nav-bar>
