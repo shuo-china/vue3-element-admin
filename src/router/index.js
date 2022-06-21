@@ -8,7 +8,7 @@ const privateRoutes = [
     component: layout,
     redirect: '/user/manage',
     meta: {
-      title: '用户管理',
+      title: 'user',
       icon: 'personnel'
     },
     children: [
@@ -59,7 +59,7 @@ const privateRoutes = [
     component: layout,
     redirect: '/article/ranking',
     meta: {
-      title: '文章管理',
+      title: 'article',
       icon: 'article'
     },
     children: [
@@ -117,7 +117,7 @@ const publicRoutes = [
         name: 'profile',
         component: () => import('@/views/profile/index'),
         meta: {
-          title: '个人中心',
+          title: 'profile',
           icon: 'el-icon-user'
         }
       },
