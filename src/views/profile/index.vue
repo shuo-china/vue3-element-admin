@@ -1,7 +1,7 @@
 <template>
-  <div>{{ $t('msg.test') }}</div>
+  <div>profile</div>
 </template>
 
 <script setup></script>
 
-<style></style>
+<style lang="scss"></style>
