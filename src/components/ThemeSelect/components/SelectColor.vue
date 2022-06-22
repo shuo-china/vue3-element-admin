@@ -24,6 +24,7 @@
 <script setup>
 import { defineProps, defineEmits, ref } from 'vue'
 import { useStore } from 'vuex'
+import { generateNewStyle, writeNewStyle } from '@/utils/theme'
 
 defineProps({
   modelValue: {
@@ -39,7 +40,9 @@ const closed = () => {
 }
 
 const store = useStore()
-const confirm = () => {
+const confirm = async () => {
+  const newStyle = await generateNewStyle(mColor.value)
+  writeNewStyle(newStyle)
   store.commit('theme/setMainColor', mColor.value)
   closed()
 }
@@ -61,7 +64,7 @@ const predefineColors = [
   'hsla(209, 100%, 56%, 0.73)',
   '#c7158577'
 ]
-console.log(store.getters.mainColor)
+
 // 默认色值
 const mColor = ref(store.getters.mainColor)
 </script>

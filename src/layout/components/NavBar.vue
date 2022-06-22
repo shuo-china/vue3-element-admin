@@ -3,6 +3,8 @@
     <hamburger class="hamburger-container" />
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
+      <header-search class="right-menu-item hover-effect" />
+      <screenfull class="right-menu-item hover-effect" />
       <theme-select class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
       <!-- 头像 -->
@@ -39,6 +41,8 @@ import Hamburger from '@/components/Hamburger'
 import Breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
 import ThemeSelect from '@/components/ThemeSelect'
+import Screenfull from '@/components/Screenfull'
+import HeaderSearch from '@/components/HeaderSearch'
 
 const store = useStore()
 const logout = () => {
@@ -85,7 +89,7 @@ const logout = () => {
         position: relative;
 
         .el-avatar {
-          --el-avatar-background-color: none;
+          --el-avatar-bg-color: none;
           margin-right: 12px;
         }
       }

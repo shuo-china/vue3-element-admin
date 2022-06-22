@@ -64,8 +64,6 @@ import { useStore } from 'vuex'
 import { validatePassword } from './rules'
 import { useI18n } from 'vue-i18n'
 
-console.log(getCurrentInstance())
-
 // 数据源
 const loginForm = ref({
   username: 'super-admin',
