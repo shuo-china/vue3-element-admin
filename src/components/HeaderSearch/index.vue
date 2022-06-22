@@ -17,59 +17,95 @@
       @change="onSelectChange"
     >
       <el-option
-        v-for="option in 5"
-        :key="option"
-        :label="option"
-        :value="option"
+        v-for="option in searchOptions"
+        :key="option.item.path"
+        :label="option.item.title.join(' > ')"
+        :value="option.item"
       ></el-option>
     </el-select>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { filterRoutes } from '@/utils/route'
 import { useRouter } from 'vue-router'
 import Fuse from 'fuse.js'
 import { generateRoutes } from './FuseData'
+import { watchSwitchLang } from '@/utils/i18n'
 
 // 数据源
 const router = useRouter()
-const searchPool = computed(() => {
+let searchPool = computed(() => {
   return generateRoutes(filterRoutes(router.getRoutes()))
 })
 
-const fuse = new Fuse(searchPool.value, {
-  shouldSort: true,
-  minMatchCharLength: 1,
-  keys: [
-    {
-      name: 'title',
-      weight: 0.7
-    },
-    {
-      name: 'path',
-      weight: 0.3
-    }
-  ]
-})
+let fuse
+const initFuse = (searchPool) => {
+  fuse = new Fuse(searchPool, {
+    shouldSort: true,
+    minMatchCharLength: 1,
+    keys: [
+      {
+        name: 'title',
+        weight: 0.7
+      },
+      {
+        name: 'path',
+        weight: 0.3
+      }
+    ]
+  })
+}
+initFuse(searchPool.value)
 
 const isShow = ref(false)
 
 const onShowClick = () => {
-  console.log(123)
   isShow.value = !isShow.value
+  if (!isShow.value) {
+    headerSearchSelectRef.value.blur()
+    searchOptions.value = []
+  }
 }
+
+const headerSearchSelectRef = ref(null)
+const onClose = () => {
+  headerSearchSelectRef.value.blur()
+  isShow.value = false
+  searchOptions.value = []
+}
+
+watch(isShow, (val) => {
+  if (val) {
+    headerSearchSelectRef.value.focus()
+    document.body.addEventListener('click', onClose)
+  } else {
+    document.body.removeEventListener('click', onClose)
+  }
+})
 
 const search = ref('')
+const searchOptions = ref([])
 
 const querySearch = (query) => {
-  console.log(fuse.search(query))
+  if (query !== '') {
+    searchOptions.value = fuse.search(query)
+  } else {
+    searchOptions.value = []
+  }
 }
 
-const onSelectChange = () => {
-  console.log('onSelectChange')
+const onSelectChange = (val) => {
+  router.push(val.path)
 }
+
+watchSwitchLang(() => {
+  searchPool = computed(() => {
+    return generateRoutes(filterRoutes(router.getRoutes()))
+  })
+  initFuse(searchPool.value)
+})
 </script>
 
 <style lang="scss" scoped>
