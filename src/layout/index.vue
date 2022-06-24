@@ -9,9 +9,10 @@
     ></sidebar>
     <div class="main-container">
       <div class="fixed-header">
-        <nav-bar></nav-bar>
+        <nav-bar />
+        <tags-view />
       </div>
-      <app-main></app-main>
+      <app-main />
     </div>
   </div>
 </template>
@@ -20,6 +21,7 @@
 import NavBar from './components/NavBar.vue'
 import Sidebar from './components/Sidebar'
 import AppMain from './components/AppMain.vue'
+import TagsView from '@/components/TagsView'
 import variables from '@/styles/variables.module.scss'
 </script>
 
