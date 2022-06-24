@@ -4,11 +4,12 @@
     :class="[$store.getters.sidebarOpened ? 'openSidebar' : 'hideSidebar']"
   >
     <sidebar
+      id="guide-sidebar"
       class="sidebar-container"
       :style="{ backgroundColor: $store.getters.cssVar.menuBg }"
     ></sidebar>
     <div class="main-container">
-      <div class="fixed-header">
+      <div class="fixed-header" id="guide-tags">
         <nav-bar />
         <tags-view />
       </div>

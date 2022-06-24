@@ -4,7 +4,7 @@
     trigger="click"
     @command="handleSetLanguage"
   >
-    <div>
+    <div id="guide-lang">
       <el-tooltip content="国际化" :effect="effect">
         <svg-icon icon="language" />
       </el-tooltip>
