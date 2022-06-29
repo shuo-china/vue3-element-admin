@@ -38,7 +38,7 @@ export default {
         })
     },
     /* 获取用户信息 */
-    async getUserInfo(context) {
+    async getUserInfo() {
       const res = await getUserInfo()
       this.commit('user/setUserInfo', res)
       return res
