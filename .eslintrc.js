@@ -18,5 +18,11 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended',
     'plugin:prettier/recommended'
-  ]
+  ],
+  rules: {
+    'vue/multi-word-component-names': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    'vue/prefer-import-from-vue': 'off',
+    '@typescript-eslint/consistent-type-imports': 'warn'
+  }
 }
