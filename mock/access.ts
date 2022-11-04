@@ -1,4 +1,5 @@
 import type { MockMethod } from 'vite-plugin-mock'
+import { response } from './utils'
 
 const tokens = {
   admin: 'admin-token',
@@ -21,27 +22,19 @@ export default [
         })
       })
 
-      res.setHeader('Content-Type', 'application/json')
-
       const token = tokens[reqBody.username]
 
       if (token) {
-        res.statusCode = 201
-        res.end(
-          JSON.stringify({
-            access_token: token,
-            token_type: 'Bearer',
-            expires_in: 60 * 60 * 24
-          })
-        )
+        response(res, 201, {
+          access_token: token,
+          token_type: 'Bearer',
+          expires_in: 60 * 60 * 24
+        })
       } else {
-        res.statusCode = 403
-        res.end(
-          JSON.stringify({
-            code: 'LOGIN_FAIL',
-            message: '用户名或密码不正确'
-          })
-        )
+        response(res, 403, {
+          code: 'LOGIN_FAIL',
+          message: '用户名或密码不正确'
+        })
       }
     }
   },

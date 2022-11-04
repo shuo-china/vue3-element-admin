@@ -1,0 +1,23 @@
+/* stylelint-disable selector-pseudo-class-no-unknown */
+/* stylelint-disable property-no-unknown */
+
+// sidebar
+$menu-text: #bfcbd9;
+$menu-active-text: #fff;
+$menu-bg: #304156;
+$sidebar-width: 208px;
+
+// don't modify
+$sidebar-hide-width: 64px;
+
+// navbar
+$navbar-height: 48px;
+
+// animation
+$transition-duration: 0.25s;
+
+:export {
+  menuText: $menu-text;
+  menuActiveText: $menu-active-text;
+  menuBg: $menu-bg;
+}

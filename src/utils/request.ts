@@ -73,14 +73,14 @@ service.interceptors.response.use(
   error => {
     const { response, message } = error
 
-    if (response) {
+    if (response && response.data) {
       // token expired
-      if (response.status === 401 && response.data?.code === 'TOKEN_INVALID') {
+      if (response.status === 401 && response.data.code === 'TOKEN_INVALID') {
         useUserStore().clearToken()
         location.reload()
       }
 
-      const errorMsg = response.data?.message || 'Error'
+      const errorMsg = response.data.message || 'Error'
       ElMessage.error(errorMsg)
 
       return Promise.reject(new Error(errorMsg))

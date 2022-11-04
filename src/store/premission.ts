@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { asyncRoutes, constantRoutes } from '@/router'
+import { constantRoutes, asyncRoutes } from '@/router'
 import type { RouteRecordRaw } from 'vue-router'
 
 function hasPermission(roles: string[], route: RouteRecordRaw) {
@@ -35,8 +35,8 @@ interface State {
 export const usePremissionStore = defineStore('premission', {
   state: () =>
     ({
-      routes: [],
-      addRoutes: []
+      addRoutes: [],
+      routes: constantRoutes
     } as State),
   actions: {
     generateRoutes(roles: string[]) {
@@ -49,7 +49,6 @@ export const usePremissionStore = defineStore('premission', {
 
       this.addRoutes = accessedRoutes
       this.routes = constantRoutes.concat(accessedRoutes)
-
       return accessedRoutes
     }
   }

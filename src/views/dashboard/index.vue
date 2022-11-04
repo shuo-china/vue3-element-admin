@@ -1,5 +1,5 @@
 <template>
-  <div>{{ userStore.userInfo }}</div>
+  <div>{{ userStore.userInfo }}<el-icon>123</el-icon></div>
 </template>
 
 <script setup lang="ts">

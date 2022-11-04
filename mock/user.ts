@@ -1,3 +1,4 @@
+import { getToken, response } from './utils'
 import type { MockMethod } from 'vite-plugin-mock'
 
 const users = {
@@ -22,26 +23,17 @@ export default [
     url: '/api/user/info',
     method: 'get',
     rawResponse: (req, res) => {
-      res.setHeader('Content-Type', 'application/json')
+      const token = getToken(req)
 
-      const { authorization } = req.headers
-
-      if (authorization) {
-        const token = authorization.match(/^Bearer\s(\S+)/)?.[1]
-        if (token && users[token]) {
-          res.statusCode = 200
-          res.end(JSON.stringify(users[token]))
-          return
-        }
+      if (token && users[token]) {
+        response(res, 200, users[token])
+        return
       }
 
-      res.statusCode = 401
-      res.end(
-        JSON.stringify({
-          code: 'TOKEN_INVALID',
-          message: '令牌无效'
-        })
-      )
+      response(res, 401, {
+        code: 'TOKEN_INVALID',
+        message: '令牌无效'
+      })
     }
   }
 ] as MockMethod[]

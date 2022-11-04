@@ -5,10 +5,15 @@ import { isEmpty } from '@/utils/type'
 import { resetRouter } from '@/router'
 import type { LoginData } from '@/api/user'
 
+interface UserInfo {
+  avatar: string
+  nickname: string
+}
+
 export const useUserStore = defineStore('user', {
   state: () => ({
     token: getToken(),
-    userInfo: {}
+    userInfo: {} as UserInfo
   }),
   getters: {
     hasUserInfo: state => !isEmpty(state.userInfo)
