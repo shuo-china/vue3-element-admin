@@ -1,3 +1,3 @@
 <template>
-  <div>只有admin用户才可以看到此页面</div>
+  <div>只有admin用户才可以访问此页面</div>
 </template>
