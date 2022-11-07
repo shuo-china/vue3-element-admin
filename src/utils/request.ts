@@ -1,58 +1,9 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/store'
-import type { AxiosInstance, AxiosRequestConfig } from 'axios'
+import type { AxiosInstance } from 'axios'
 
-interface AxiosInstaceCustom extends AxiosInstance {
-  <T = any, D = any>(config: AxiosRequestConfig<D>): Promise<T>
-  <T = any, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<T>
-  request<T = any, D = any>(config: AxiosRequestConfig<D>): Promise<T>
-  get<T = any, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<T>
-  delete<T = any, D = any>(
-    url: string,
-    config?: AxiosRequestConfig<D>
-  ): Promise<T>
-  head<T = any, D = any>(
-    url: string,
-    config?: AxiosRequestConfig<D>
-  ): Promise<T>
-  options<T = any, D = any>(
-    url: string,
-    config?: AxiosRequestConfig<D>
-  ): Promise<T>
-  post<T = any, D = any>(
-    url: string,
-    data?: D,
-    config?: AxiosRequestConfig<D>
-  ): Promise<T>
-  put<T = any, D = any>(
-    url: string,
-    data?: D,
-    config?: AxiosRequestConfig<D>
-  ): Promise<T>
-  patch<T = any, D = any>(
-    url: string,
-    data?: D,
-    config?: AxiosRequestConfig<D>
-  ): Promise<T>
-  postForm<T = any, D = any>(
-    url: string,
-    data?: D,
-    config?: AxiosRequestConfig<D>
-  ): Promise<T>
-  putForm<T = any, D = any>(
-    url: string,
-    data?: D,
-    config?: AxiosRequestConfig<D>
-  ): Promise<T>
-  patchForm<T = any, D = any>(
-    url: string,
-    data?: D,
-    config?: AxiosRequestConfig<D>
-  ): Promise<T>
-}
-
-const service: AxiosInstaceCustom = axios.create({
+const service: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 5000
 })

@@ -23,12 +23,8 @@ declare module '@vue/runtime-core' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    Icon: typeof import('./src/components/icon/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SidebarColl: typeof import('./src/components/SidebarColl/index.vue')['default']
     SidebarCollapse: typeof import('./src/components/SidebarCollapse/index.vue')['default']
-    SvgIcon: typeof import('./src/components/SvgIcon/index.vue')['default']
   }
 }

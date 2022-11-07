@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 export const useAppStore = defineStore('app', {
   state: () => ({
     sidebarOpened: Cookies.get('sidebarStatus')
-      ? !!+Cookies.get('sidebarStatus')!
+      ? !!+(Cookies.get('sidebarStatus') || '0')
       : true
   }),
   actions: {
