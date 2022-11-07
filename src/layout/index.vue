@@ -1,7 +1,7 @@
 <template>
   <div
     class="app-wrapper"
-    :class="[appStore.sidebarOpened ? 'openSidebar' : 'hideSidebar']"
+    :class="[appStore.sidebarOpened ? 'open-sidebar' : 'hide-sidebar']"
   >
     <!-- Menu -->
     <sidebar />
@@ -25,8 +25,6 @@ const appStore = useAppStore()
 @import '@/styles/variables.module';
 
 .app-wrapper {
-  @include clearfix;
-
   position: relative;
   width: 100%;
   height: 100%;

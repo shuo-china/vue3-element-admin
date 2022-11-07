@@ -7,7 +7,7 @@
       <div class="avatar-wrapper">
         <el-avatar
           shape="square"
-          :size="38"
+          :size="36"
           :src="userStore.userInfo.avatar"
         ></el-avatar>
       </div>

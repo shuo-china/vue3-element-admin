@@ -18,8 +18,14 @@
 
   .main-container {
     position: relative;
-    min-height: 100%;
+    height: 100%;
     transition: margin-left #{$transition-duration};
+
+    &::before {
+      display: table;
+      clear: both;
+      content: '';
+    }
 
     .navbar-container {
       position: fixed;
@@ -38,14 +44,24 @@
       position: relative;
       box-sizing: border-box;
       width: 100%;
-      min-height: calc(100vh - $navbar-height);
+      height: calc(100% - $navbar-height);
       margin-top: $navbar-height;
       padding: 24px;
-      overflow: hidden;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #ccc;
+        border-radius: 10px;
+      }
     }
   }
 
-  .openSidebar {
+  .open-sidebar {
     .sidebar-container {
       width: $sidebar-width;
     }
@@ -59,7 +75,7 @@
     }
   }
 
-  .hideSidebar {
+  .hide-sidebar {
     .sidebar-container {
       width: $sidebar-hide-width;
     }

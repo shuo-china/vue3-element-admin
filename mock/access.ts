@@ -10,6 +10,7 @@ export default [
   {
     url: '/api/login',
     method: 'post',
+    timeout: 1000,
     rawResponse: async (req, res) => {
       let reqBody: any = ''
       await new Promise(resolve => {

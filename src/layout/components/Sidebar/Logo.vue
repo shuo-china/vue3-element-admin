@@ -1,14 +1,22 @@
 <template>
-  <div class="logo-container">
+  <div :class="classNames">
     <img src="/logo.svg" alt="logo" />
     <h1 v-if="appStore.sidebarOpened" class="logo-title">Kirin Admin</h1>
   </div>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useAppStore } from '@/store'
 
 const appStore = useAppStore()
+
+const classNames = computed(() => [
+  'logo-container',
+  {
+    'sidebar-closed': !appStore.sidebarOpened
+  }
+])
 </script>
 
 <style lang="scss" scoped>
@@ -17,7 +25,6 @@ const appStore = useAppStore()
 .logo-container {
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 16px 20px;
 
   img {
@@ -35,5 +42,9 @@ const appStore = useAppStore()
     line-height: 32px;
     white-space: nowrap;
   }
+}
+
+.sidebar-closed {
+  justify-content: center;
 }
 </style>
