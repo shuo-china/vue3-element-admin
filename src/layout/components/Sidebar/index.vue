@@ -47,7 +47,10 @@ function generateMenus(routes: readonly RouteRecordRaw[], basePath = '') {
         return
       } else {
         result.push(
-          ...generateMenus(item.children!, path.resolve(basePath, item.path))
+          ...generateMenus(
+            item.children as RouteRecordRaw[],
+            path.resolve(basePath, item.path)
+          )
         )
         return
       }
@@ -58,7 +61,7 @@ function generateMenus(routes: readonly RouteRecordRaw[], basePath = '') {
         path: routePath,
         children: isEmpty(item.children)
           ? []
-          : generateMenus(item.children!, routePath)
+          : generateMenus(item.children as RouteRecordRaw[], routePath)
       }
       result.push(route)
     }
