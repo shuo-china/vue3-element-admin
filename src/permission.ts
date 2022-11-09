@@ -17,7 +17,7 @@ router.beforeEach(async (to, from, next) => {
           const { roles } = await userStore.getUserInfo()
 
           const premissionStore = usePremissionStore()
-          const accessRoutes = premissionStore.generateRoutes(roles)
+          const accessRoutes = premissionStore.generateRoutes(roles || [])
           accessRoutes.forEach(router.addRoute)
 
           next({ ...to, replace: true })
